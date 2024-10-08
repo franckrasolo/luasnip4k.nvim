@@ -7,12 +7,13 @@
       <img src="https://img.shields.io/badge/LuaSnip-2.3.0-yellow.svg?logo=lua&style=for-the-badge&labelColor=30373d&logoColor=yellow"/></a>
     <a href="https://github.com/JetBrains/kotlin/releases/tag/v2.0.20">
       <img src="https://img.shields.io/badge/Kotlin-2.0.20-7f52ff.svg?logo=kotlin&style=for-the-badge&labelColor=30373d&logoColor=7f52ff"/></a>
-    <a href="https://github.com/franckrasolo/luasnip4k/blob/trunk/LICENSE">
+    <a href="https://github.com/franckrasolo/luasnip4k.nvim/blob/trunk/LICENSE">
       <img src="https://img.shields.io/badge/License-MIT-blue.svg?logo=spdx&style=for-the-badge&labelColor=30373d"/></a>
 </p>
 
-[luasnip4k](https://github.com/franckrasolo/luasnip4k) is a Neovim plugin providing [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-snippets for an _opinionated_ selection of Kotlin libraries only.
+[luasnip4k.nvim](https://github.com/franckrasolo/luasnip4k.nvim) is a Neovim plugin
+providing [LuaSnip](https://github.com/L3MON4D3/LuaSnip) snippets for an _opinionated_
+selection of Kotlin libraries only.
 
 Starting with [http4k](https://www.http4k.org/), it will eventually cover
 _some_ of the foundational libraries of [forkhandles](https://github.com/fork-handles/forkhandles)
@@ -31,7 +32,7 @@ if they are not already present in the active Neovim buffer.
 
 ```lua
 {
-  "franckrasolo/luasnip4k",
+  "franckrasolo/luasnip4k.nvim",
   dependencies = { "L3MON4D3/LuaSnip" },
 }
 ```

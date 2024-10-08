@@ -5,5 +5,5 @@ return {
   dependencies = "L3MON4D3/LuaSnip",
   ft = "kotlin",
   lazy = true,
-  config = true,
+  opts = {},
 }

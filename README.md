@@ -28,12 +28,11 @@ if they are not already present in the active Neovim buffer.
 
 ## 📦 Installation
 
-[lazy.nvim](https://lazy.folke.io/):
+For [lazy.nvim](https://lazy.folke.io/), simply configure this plugin as follows:
 
 ```lua
-{
-  "franckrasolo/luasnip4k.nvim",
-  dependencies = { "L3MON4D3/LuaSnip" },
+return {
+  "franckrasolo/luasnip4k.nvim"
 }
 ```
 

@@ -49,13 +49,13 @@ the cursor immediately after a snippet is expanded.
 |  Trigger   | Expands to                            | Description                            |
 | :--------: | ------------------------------------- | -------------------------------------- |
 |  `fil`     | `Filter { next -> { _; next(it) } }`  | Template for a request/response filter |
-|  `hh`      | `{ req: Request -> Response(OK)_ } `  | Snippet for a request/response handler |
+|  `hh`      | `{ req: Request -> Response(OK)_ }`  | Snippet for a request/response handler |
 
 ### Requests
 
 |  Trigger   | Expands to               | Description                      |
 | :--------: | ------------------------ | -------------------------------- |
-| `head`     | `Request(HEAD, "/_") `   | Template for a `HEAD` request    |
+| `head`     | `Request(HEAD, "/_")`   | Template for a `HEAD` request    |
 | `get`      | `Request(GET, "/_")`     | Template for a `GET` request     |
 | `post`     | `Request(POST, "/_")`    | Template for a `POST` request    |
 | `put`      | `Request(PUT, "/_")`     | Template for a `PUT` request     |

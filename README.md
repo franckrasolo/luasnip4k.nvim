@@ -55,7 +55,7 @@ the cursor immediately after a snippet is expanded.
 
 |  Trigger   | Expands to               | Description                      |
 | :--------: | ------------------------ | -------------------------------- |
-| `head`     | `Request(HEAD, "/_")`   | Template for a `HEAD` request    |
+| `head`     | `Request(HEAD, "/_")`    | Template for a `HEAD` request    |
 | `get`      | `Request(GET, "/_")`     | Template for a `GET` request     |
 | `post`     | `Request(POST, "/_")`    | Template for a `POST` request    |
 | `put`      | `Request(PUT, "/_")`     | Template for a `PUT` request     |
@@ -75,9 +75,9 @@ the cursor immediately after a snippet is expanded.
 | ...        |                                 |                                   |
 | `307`      | `Response(TEMPORARY_REDIRECT)_` | Snippet for a HTTP `307` response |
 | ...        |                                 |                                   |
-| `401`      | `Request(UNAUTHORIZED)_`        | Snippet for a HTTP `401` response |
+| `401`      | `Response(UNAUTHORIZED)_`       | Snippet for a HTTP `401` response |
 | ...        |                                 |                                   |
-| `504`      | `Request(GATEWAY_TIMEOUT)_`     | Snippet for a HTTP `504` response |
+| `504`      | `Response(GATEWAY_TIMEOUT)_`    | Snippet for a HTTP `504` response |
 | ...        |                                 |                                   |
 
 </details>

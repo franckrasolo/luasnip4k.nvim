@@ -8,7 +8,7 @@ end
 local M = {}
 
 function M.setup(_)
-  require("luasnip4k.http4k")
+  require("luasnip4k.snippets")
 end
 
 return M

@@ -6,6 +6,7 @@ local insert_imports = imports.insert_imports
 local ls = require("luasnip")
 local s = ls.snippet
 local i = ls.insert_node
+local f = ls.function_node
 local rep = require("luasnip.extras").rep
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
@@ -42,6 +43,50 @@ local function static_main_with_args()
     ]],
     { i(0) }
   )
+end
+
+local function find_identifier_for(node, type)
+  for child in node:iter_children() do
+    if child:type() == type then return child end
+  end
+  return nil
+end
+
+local function find_function_and_parent_names(start_node, valid_node_types)
+  local node = start_node
+  local parent_node = nil
+
+  -- find the immediate top-level function declaration for the cursor location (node)
+  while node ~= nil do
+    if node:type() == "function_declaration" and valid_node_types[node:parent():type()] then
+      parent_node = node:parent():parent()
+      if parent_node and parent_node:type() == "companion_object" then
+        parent_node = parent_node:parent():parent()
+      end
+      break
+    end
+    node = node:parent()
+  end
+
+  if node then
+    local function_name = find_identifier_for(node, "simple_identifier")
+    local parent_name = parent_node and find_identifier_for(parent_node, "type_identifier") or nil
+    return function_name, parent_name
+  else
+    return nil, nil
+  end
+end
+
+local function get_qualified_function_name()
+  local function_name, parent_name = find_function_and_parent_names(vim.treesitter.get_node(), {
+    source_file = true,
+    class_body = true,
+  })
+
+  local bufnr, result = 0, nil
+  result = parent_name and vim.treesitter.get_node_text(parent_name, bufnr) or "<top>"
+  result = function_name and result .. "." .. vim.treesitter.get_node_text(function_name, bufnr)
+  return result
 end
 
 local intellij_snippets = {
@@ -185,6 +230,10 @@ local intellij_snippets = {
     )
   ),
   s({ trig = "sout", desc = "Prints a string to System.out" }, fmt("println({})", { i(0) })),
+  s(
+    { trig = "soutf", desc = "Prints current class and function name to System.out" },
+    fmt([[println("{}")]], { f(get_qualified_function_name) })
+  ),
   s(
     { trig = "test", name = "JUnit 5 test", desc = "Template for a JUnit 5 test" },
     fmta(

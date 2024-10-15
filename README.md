@@ -1,4 +1,4 @@
-<h1 align="center">LuaSnip snippets for select Kotlin libraries</h1>
+<h1 align="center">LuaSnip snippets for Kotlin and select libraries</h1>
 
 ![banner](banner.png)
 
@@ -14,10 +14,10 @@
 </p>
 
 [luasnip4k.nvim](https://github.com/franckrasolo/luasnip4k.nvim) is a Neovim plugin
-providing [LuaSnip](https://github.com/L3MON4D3/LuaSnip) snippets for an _opinionated_
+providing [LuaSnip](https://github.com/L3MON4D3/LuaSnip) snippets for Kotlin and an _opinionated_
 selection of Kotlin libraries only.
 
-Starting with [http4k](https://www.http4k.org/), it will eventually cover
+Starting with [http4k](https://www.http4k.org/) and IntelliJ IDEA live templates, it will eventually cover
 _some_ of the foundational libraries of [forkhandles](https://github.com/fork-handles/forkhandles)
 as the need arises.
 

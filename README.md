@@ -44,6 +44,15 @@ In all snippets below, the underscore character `_` indicates the position of
 the cursor immediately after a snippet is expanded.
 
 <details>
+<summary><code>IntelliJ IDEA / JetBrains Fleet</code></summary>
+
+> We refer you to JetBrains Fleet's
+> [List of Kotlin live templates](https://www.jetbrains.com/help/fleet/live-templates-list-kotlin.html)
+> as `luasnip4k.nvim` already supports most of them out of the box.
+
+</details>
+
+<details>
 <summary><code>http4k</code></summary>
 
 ### General

@@ -17,9 +17,9 @@
 providing [LuaSnip](https://github.com/L3MON4D3/LuaSnip) snippets for Kotlin and an _opinionated_
 selection of Kotlin libraries only.
 
-Starting with [http4k](https://www.http4k.org/) and IntelliJ IDEA live templates, it will eventually cover
-_some_ of the foundational libraries of [forkhandles](https://github.com/fork-handles/forkhandles)
-as the need arises.
+Starting with [http4k](https://www.http4k.org/) and IntelliJ IDEA live templates for Kotlin,
+it will eventually cover _some_ of the foundational libraries
+of [forkhandles](https://github.com/fork-handles/forkhandles) as the need arises.
 
 The initial `http4k` snippets cover the same ground _and_ are functionally identical
 to these [live templates](https://github.com/http4k/intellij-settings#how-to-use-the-live-templates)

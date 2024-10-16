@@ -105,7 +105,7 @@ end
 function scopes.any_scope(predicates)
   predicates = predicates or {}
 
-  if #predicates == 0 then return { show_condition = true } end
+  if #predicates == 0 then return { show_condition = function() return true end } end
 
   return {
     show_condition = function()

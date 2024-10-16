@@ -9,6 +9,9 @@ local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 
+local scopes = require("luasnip4k.scopes")
+local any_scope = scopes.any_scope
+
 local function request_snippet(method)
   return s(
     {
@@ -22,7 +25,8 @@ local function request_snippet(method)
           "org.http4k.core.Request",
       }
     end))
-    })
+    }),
+    any_scope {}
   )
 end
 
@@ -39,7 +43,8 @@ local function response_snippet(status_code, status_name)
           "org.http4k.core.Status.Companion." .. status_name,
       }
     end))
-    })
+    }),
+    any_scope {}
   )
 end
 
@@ -54,7 +59,7 @@ local http4k_snippets = {
       }}
     ]],
     { i(0, "", hook(function() return insert_imports { "org.http4k.core.Filter" } end)) }
-  )),
+  ), any_scope {}),
 
   s({ trig = "hh", name = "http4k HttpHandler", desc = "http4k snippet for a request/response handler" }, fmt(
     "{{ req: Request -> Response(OK){} }}",
@@ -67,7 +72,7 @@ local http4k_snippets = {
         }
       end))
     }
-  )),
+  ), any_scope {}),
 
   request_snippet("HEAD"),
   request_snippet("GET"),

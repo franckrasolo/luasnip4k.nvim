@@ -11,6 +11,15 @@ local rep = require("luasnip.extras").rep
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 
+local scopes = require("luasnip4k.scopes")
+local scope = scopes.scope
+local any_scope = scopes.any_scope
+local top_level = scopes.top_level
+local class = scopes.class
+local object_declaration = scopes.object_declaration
+local statement = scopes.statement
+local expression = scopes.expression
+
 local function main_without_args()
   return fmt(
     [[
@@ -99,14 +108,16 @@ local intellij_snippets = {
         }
       ]],
       { supertype = i(1, "Any()"), body = i(0) }
-    )
+    ),
+    any_scope { expression, statement }
   ),
   s(
     { trig = "closure", name = "Closure", desc = "Closure (function without name)" },
     fmta(
       "{ <param>: <param_type> ->> <copy><body> }",
       { param = i(1, "x"), param_type = i(2, "Any"), copy = rep(1), body = i(0) }
-    )
+    ),
+    any_scope { expression, statement }
   ),
   s(
     { trig = "exfun", name = "Extension function" },
@@ -117,7 +128,8 @@ local intellij_snippets = {
         }
       ]],
       { receiver = i(1, "Any"), name = i(2, "f"), params = i(3), return_type = i(4, "Unit"), body = i(0) }
-    )
+    ),
+    any_scope { class, top_level }
   ),
   s(
     { trig = "exval", name = "Extension property", desc = "Extension read-only property" },
@@ -127,7 +139,8 @@ local intellij_snippets = {
             get() = <expr>
       ]],
       { receiver = i(1, "Any"), name = i(2, "v"), type = i(3, "Any"), expr = i(0) }
-    )
+    ),
+    any_scope { class, top_level }
   ),
   s(
     { trig = "exvar", name = "Extension property", desc = "Extension read-write property" },
@@ -140,7 +153,8 @@ local intellij_snippets = {
             }
       ]],
       { receiver = i(1, "Any"), name = i(2, "v"), type = i(3, "Any"), expr = i(4), assignment = i(0) }
-    )
+    ),
+    any_scope { class, top_level }
   ),
   s(
     { trig = "fun0", desc = "Function with no parameters" },
@@ -151,7 +165,8 @@ local intellij_snippets = {
         }
       ]],
       { name = i(1), return_type = i(2, "Unit"), body = i(0) }
-    )
+    ),
+    any_scope { class, top_level, statement }
   ),
   s(
     { trig = "fun1", desc = "Function with one parameter" },
@@ -168,7 +183,8 @@ local intellij_snippets = {
         return_type = i(4, "Unit"),
         body = i(0),
       }
-    )
+    ),
+    any_scope { class, top_level, statement }
   ),
   s(
     { trig = "fun2", desc = "Function with two parameters" },
@@ -187,7 +203,8 @@ local intellij_snippets = {
         return_type = i(6, "Unit"),
         body = i(0),
       }
-    )
+    ),
+    any_scope { class, top_level, statement }
   ),
   s(
     { trig = "interface", name = "Interface" },
@@ -198,11 +215,12 @@ local intellij_snippets = {
         }
       ]],
       { name = i(1), body = i(0) }
-    )
+    ),
+    any_scope { class, top_level, statement }
   ),
-  s({ trig = "main", desc = "main() function" }, main_without_args()),
-  s({ trig = "maina", desc = "main(args) function" }, main_with_args()),
-  s({ trig = "maino", desc = "main(args) function" }, static_main_with_args()),
+  s({ trig = "main", desc = "main() function" }, main_without_args(), scope(top_level)),
+  s({ trig = "maina", desc = "main(args) function" }, main_with_args(), scope(top_level)),
+  s({ trig = "maino", desc = "main(args) function" }, static_main_with_args(), scope(object_declaration)),
   s(
     { trig = "object", name = "Anonymous object" },
     fmta(
@@ -212,12 +230,17 @@ local intellij_snippets = {
         }
       ]],
       { supertype = i(1, "Any()"), body = i(0) }
-    )
+    ),
+    any_scope { expression, statement }
   ),
-  s({ trig = "psvm", desc = "main() function" }, main_without_args()),
-  s({ trig = "psvma", desc = "main(args) function" }, main_with_args()),
-  s({ trig = "psvmo", desc = "main(args) function" }, static_main_with_args()),
-  s({ trig = "serr", desc = "Prints a string to System.err" }, fmt("System.err.println({})", { i(0) })),
+  s({ trig = "psvm", desc = "main() function" }, main_without_args(), scope(top_level)),
+  s({ trig = "psvma", desc = "main(args) function" }, main_with_args(), scope(top_level)),
+  s({ trig = "psvmo", desc = "main(args) function" }, static_main_with_args(), scope(object_declaration)),
+  s(
+    { trig = "serr", desc = "Prints a string to System.err" },
+    fmt("System.err.println({})", { i(0) }),
+    scope(statement)
+  ),
   s(
     { trig = "singleton", name = "Singleton" },
     fmta(
@@ -227,12 +250,18 @@ local intellij_snippets = {
         }
       ]],
       { name = i(1), body = i(0) }
-    )
+    ),
+    any_scope { class, top_level, statement }
   ),
-  s({ trig = "sout", desc = "Prints a string to System.out" }, fmt("println({})", { i(0) })),
+  s(
+    { trig = "sout", desc = "Prints a string to System.out" },
+    fmt("println({})", { i(0) }),
+    scope(statement)
+  ),
   s(
     { trig = "soutf", desc = "Prints current class and function name to System.out" },
-    fmt([[println("{}")]], { f(get_qualified_function_name) })
+    fmt([[println("{}")]], { f(get_qualified_function_name) }),
+    scope(statement)
   ),
   s(
     { trig = "test", name = "JUnit 5 test", desc = "Template for a JUnit 5 test" },
@@ -247,7 +276,8 @@ local intellij_snippets = {
         name = i(1, "", hook(function() return insert_imports { "org.junit.jupiter.api.Test" } end)),
         body = i(0, ""),
       }
-    )
+    ),
+    any_scope { class, top_level, statement }
   ),
   s(
     { trig = "void", desc = "Function returning nothing" },
@@ -258,7 +288,8 @@ local intellij_snippets = {
         }
       ]],
       { name = i(1), params = i(2), body = i(0) }
-    )
+    ),
+    any_scope { class, top_level, statement }
   ),
 }
 

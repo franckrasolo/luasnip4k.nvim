@@ -221,6 +221,11 @@ local intellij_snippets = {
     scope(statement)
   ),
   s(
+    { trig = "soutp", desc = "Prints function parameter names and values to System.out" },
+    fmt([[println("{}")]], { f(functions.get_function_parameters) }),
+    scope(statement)
+  ),
+  s(
     { trig = "test", name = "JUnit 5 test", desc = "Template for a JUnit 5 test" },
     fmta(
       [[

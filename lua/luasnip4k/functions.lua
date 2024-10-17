@@ -45,4 +45,28 @@ function functions.get_qualified_function_name()
   return result
 end
 
+function functions.get_function_parameters()
+  local node = vim.treesitter.get_node()
+  local parameters = {}
+
+  while node ~= nil do
+    if node:type() == "function_declaration" then
+      local query = vim.treesitter.query.parse("kotlin", [[
+        (function_value_parameters (parameter (simple_identifier) @param))
+      ]])
+
+      local bufnr = 0
+      for _, capture, _ in query:iter_captures(node, bufnr) do
+        local parameter = vim.treesitter.get_node_text(capture, bufnr)
+        table.insert(parameters, string.format("%s = [${%s}]", parameter, parameter))
+      end
+      break
+    end
+
+    node = node:parent()
+  end
+
+  return table.concat(parameters, ", ")
+end
+
 return functions

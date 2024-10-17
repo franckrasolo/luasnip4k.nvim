@@ -1,5 +1,6 @@
 local ts_utils = require("nvim-treesitter.ts_utils")
 
+--- @module "luasnip4k.scopes"
 local scopes = {}
 
 --- Determines if a node is located at the top-level of a Kotlin file.

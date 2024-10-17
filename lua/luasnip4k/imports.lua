@@ -102,6 +102,7 @@ local function insert_imports(lang, imports)
   vim.api.nvim_buf_set_lines(0, line_number, line_number, false, result)
 end
 
+--- @module "luasnip4k.imports"
 return function(lang)
   local events = require("luasnip.util.events")
 

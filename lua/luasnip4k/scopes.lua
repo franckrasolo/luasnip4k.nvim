@@ -83,6 +83,7 @@ function scopes.expression(node)
     super_expression = true,
     this_expression = true,
     try_expression = true,
+    when_expression = true,
   }
 
   return unary_expression_types[node:type()]

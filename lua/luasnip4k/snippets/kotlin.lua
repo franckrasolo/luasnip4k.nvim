@@ -1,5 +1,5 @@
 local LANG = "kotlin"
-local imports = require("luasnip4k.imports")(LANG)
+local imports = require("luasnip4k.lib.imports")(LANG)
 local hook = imports.hook
 local insert_imports = imports.insert_imports
 

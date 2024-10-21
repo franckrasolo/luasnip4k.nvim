@@ -1,5 +1,5 @@
 local LANG = "kotlin"
-local imports = require("luasnip4k.imports")(LANG)
+local imports = require("luasnip4k.lib.imports")(LANG)
 local hook = imports.hook
 local insert_imports = imports.insert_imports
 
@@ -11,8 +11,8 @@ local rep = require("luasnip.extras").rep
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 
-local functions = require("luasnip4k.functions")
-local scopes = require("luasnip4k.scopes")
+local functions = require("luasnip4k.lib.functions")
+local scopes = require("luasnip4k.lib.scopes")
 local scope = scopes.scope
 local any_scope = scopes.any_scope
 local top_level = scopes.top_level

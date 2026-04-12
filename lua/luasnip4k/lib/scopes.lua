@@ -1,5 +1,3 @@
-local ts_utils = require("nvim-treesitter.ts_utils")
-
 --- @module "luasnip4k.scopes"
 local scopes = {}
 
@@ -111,7 +109,7 @@ function scopes.any_scope(predicates)
 
   return {
     show_condition = function()
-      local cursor_node = ts_utils.get_node_at_cursor()
+      local cursor_node = vim.treesitter.get_node()
       for _, predicate in ipairs(predicates) do
         if predicate(cursor_node) then return true end
       end

@@ -3,12 +3,12 @@
 ![banner](banner.png)
 
 <p align="center">
-    <a href="https://github.com/neovim/neovim/releases/tag/v0.11.3">
-      <img alt="Neovim v0.11.3" src="https://img.shields.io/badge/Neovim-0.11.3-6cbe55.svg?logo=neovim&style=for-the-badge&labelColor=30373d&logoColor=6cbe55"/></a>
-    <a href="https://github.com/L3MON4D3/LuaSnip/releases/tag/v2.4.0">
-      <img alt="LuaSnip v2.4.0" src="https://img.shields.io/badge/LuaSnip-2.4.0-yellow.svg?logo=lua&style=for-the-badge&labelColor=30373d&logoColor=yellow"/></a>
-    <a href="https://github.com/JetBrains/kotlin/releases/tag/v2.2.0">
-      <img alt="Kotlin v2.2.0" src="https://img.shields.io/badge/Kotlin-2.2.0-7f52ff.svg?logo=kotlin&style=for-the-badge&labelColor=30373d&logoColor=7f52ff"/></a>
+    <a href="https://github.com/neovim/neovim/releases/tag/v0.12.1">
+      <img alt="Neovim v0.12.1" src="https://img.shields.io/badge/Neovim-0.12.1-6cbe55.svg?logo=neovim&style=for-the-badge&labelColor=30373d&logoColor=6cbe55"/></a>
+    <a href="https://github.com/L3MON4D3/LuaSnip/releases/tag/v2.5.0">
+      <img alt="LuaSnip v2.5.0" src="https://img.shields.io/badge/LuaSnip-2.5.0-yellow.svg?logo=lua&style=for-the-badge&labelColor=30373d&logoColor=yellow"/></a>
+    <a href="https://github.com/JetBrains/kotlin/releases/tag/v2.3.20">
+      <img alt="Kotlin v2.3.20" src="https://img.shields.io/badge/Kotlin-2.3.20-7f52ff.svg?logo=kotlin&style=for-the-badge&labelColor=30373d&logoColor=7f52ff"/></a>
     <a href="https://github.com/franckrasolo/luasnip4k.nvim/blob/trunk/LICENSE">
       <img alt="MIT license" src="https://img.shields.io/badge/License-MIT-blue.svg?logo=spdx&style=for-the-badge&labelColor=30373d"/></a>
 </p>
